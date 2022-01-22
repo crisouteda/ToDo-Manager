@@ -8,6 +8,15 @@ The following project has been developed for the international [FemHack](https:/
 
 Developed in [Svelte](https://svelte.dev/docs) and styled with CSS
 
+## Features
+
+- Sing up / Sign in
+- Create a list of tasks
+- Create new tasks with 3 properties: title, description and tags
+- Edit the 3 properties of the tasks
+- Delete tags
+- Delete tasks
+
 ## To Get started // To run in local
 
 Install the dependencies and start!:
