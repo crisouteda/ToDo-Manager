@@ -2,6 +2,8 @@
 
 The following project has been developed for the international [FemHack](https://nuwe.io/femhack) in the <mark>frontend</mark>category.
 
+[Visit the deployed app](https://modest-cori-611038.netlify.app/)
+
 ## Tools
 
 Developed in [Svelte](https://svelte.dev/docs) and styled with CSS
