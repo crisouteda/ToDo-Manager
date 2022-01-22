@@ -1,9 +1,8 @@
 <script>
   export let listIndex;
   export let cardIndex;
-  import { getTaskStore } from "../stores/tasks";
   import { listIndexStore, cardIndexStore } from "../stores/listIndex";
-  let taskPerCategory = getTaskStore();
+  export let taskPerCategory;
 </script>
 
 <div>
