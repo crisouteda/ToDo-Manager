@@ -5,20 +5,23 @@ export function getTaskStore() {
     JSON.parse(localStorage.getItem("tasks")) || [
       {
         title: "default",
-        tasks: [{ title: "default", description: "default" }],
+        tasks: [{ title: "default", description: "default", tags: [] }],
       },
       {
         title: "default",
         tasks: [
-          { title: "default", description: "default" },
-          { title: "default", description: "default" },
+          { title: "default", description: "default", tags: ["work"] },
+          {
+            title: "default",
+            description: "default",
+            tags: ["gym", "Household chores"],
+          },
         ],
       },
     ]
   );
 
   taskPerCategory.subscribe((val) => {
-    console.log("subscribe");
     localStorage.setItem("tasks", JSON.stringify(val));
   });
 
