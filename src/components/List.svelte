@@ -1,7 +1,8 @@
 <script>
   export let index;
   import Card from "./Card.svelte";
-  export let taskPerCategory;
+  import { getTaskStore } from "../stores/tasks";
+  let taskPerCategory = getTaskStore();
 </script>
 
 <div class="list">
@@ -13,14 +14,14 @@
     <button
       class="remove-button"
       on:click={() => {
-        let newBla = $taskPerCategory;
-        newBla.splice(index, 1);
-        $taskPerCategory = newBla;
+        let newCat = $taskPerCategory;
+        newCat.splice(index, 1);
+        $taskPerCategory = newCat;
       }}>-</button
     >
   </div>
   <div class="cards-wrapper">
-    {#each $taskPerCategory[index].tasks as _, cardIndex}
+    {#each $taskPerCategory[index]?.tasks as _, cardIndex}
       <Card listIndex={index} {cardIndex} />
     {/each}
   </div>
@@ -32,6 +33,7 @@
         {
           title: "default",
           description: "default",
+          tags: [],
         },
       ];
     }}
@@ -106,13 +108,12 @@
   .remove-button {
     background: red;
     border: 0px;
-    height: 30px;
-    width: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
     color: #fff;
     margin: 0px;
   }
