@@ -6,13 +6,21 @@
 </script>
 
 <div class="modal-wrapper">
-  <div class="modal-background" />
+  <div
+    class="modal-background"
+    on:click={() => {
+      $listIndexStore = undefined;
+      $cardIndexStore = undefined;
+      window.location.reload();
+    }}
+  />
   <div class="modal">
     <button
       class="close"
       on:click={() => {
         $listIndexStore = undefined;
         $cardIndexStore = undefined;
+        window.location.reload();
       }}>X</button
     >
     <div class="content">
@@ -47,6 +55,7 @@
             ...$taskPerCategory[i1].tasks.slice(i2 + 1),
           ];
           $taskPerCategory = cris;
+          window.location.reload();
         }}>Remove</button
       >
       <div class="tags-list">
@@ -73,6 +82,34 @@
 </div>
 
 <style>
+  button {
+    background-image: linear-gradient(-180deg, #abcbf8 0%, #8cb9f8 100%);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    color: #000000;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  button:hover {
+    background-image: linear-gradient(-180deg, #abcbf8 0%, #8cb9f8 100%);
+  }
+
+  @media (min-width: 768px) {
+    button {
+      padding: 1rem 2rem;
+    }
+  }
+
   .close {
     position: absolute;
     top: 0px;
@@ -80,9 +117,12 @@
     margin-right: -30px;
     margin-top: -30px;
     border-radius: 20px;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
+    padding: 10px 0px 0px;
+    border: 1px solid gray;
   }
+
   .tags-list {
     display: flex;
     flex-direction: column;

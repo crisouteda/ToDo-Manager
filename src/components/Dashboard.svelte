@@ -38,6 +38,7 @@
 
   .dashboard {
     display: flex;
+    margin-top: 4%;
     align-items: flex-start;
     padding: 10px 10px 20px;
     border-top-right-radius: 15px;

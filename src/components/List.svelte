@@ -14,9 +14,11 @@
     <button
       class="remove-button"
       on:click={() => {
-        let newCat = $taskPerCategory;
-        newCat.splice(index, 1);
-        $taskPerCategory = newCat;
+        $taskPerCategory = [
+          ...$taskPerCategory.slice(0, index),
+          ...$taskPerCategory.slice(index + 1),
+        ];
+        window.location.reload();
       }}>-</button
     >
   </div>
