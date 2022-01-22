@@ -106,7 +106,7 @@
   }
 
   .remove-button {
-    background: red;
+    background: rgb(184, 35, 35);
     border: 0px;
     width: 20px;
     height: 20px;
