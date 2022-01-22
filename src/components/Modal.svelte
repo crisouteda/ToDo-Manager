@@ -59,15 +59,6 @@
         }}>Remove Card</button
       >
       <div class="tags-list">
-        {#each $taskPerCategory[$listIndexStore]?.tasks[$cardIndexStore]?.tags as tag, i}
-          <input
-            value={tag}
-            on:change={(e) => {
-              $taskPerCategory[$listIndexStore].tasks[$cardIndexStore].tags[i] =
-                e.target.value;
-            }}
-          />
-        {/each}
         <button
           on:click={() => {
             $taskPerCategory[$listIndexStore].tasks[$cardIndexStore].tags = [
@@ -76,6 +67,32 @@
             ];
           }}>Add tag</button
         >
+        {#each $taskPerCategory[$listIndexStore]?.tasks[$cardIndexStore]?.tags as tag, i}
+          <span class="tag-wrapper">
+            <input
+              value={tag}
+              on:change={(e) => {
+                $taskPerCategory[$listIndexStore].tasks[$cardIndexStore].tags[
+                  i
+                ] = e.target.value;
+              }}
+            />
+            <span
+              class="remove-tag"
+              on:click={() => {
+                $taskPerCategory[$listIndexStore].tasks[$cardIndexStore].tags =
+                  [
+                    ...$taskPerCategory[$listIndexStore].tasks[
+                      $cardIndexStore
+                    ].tags.slice(0, i),
+                    ...$taskPerCategory[$listIndexStore].tasks[
+                      $cardIndexStore
+                    ].tags.slice(i + 1),
+                  ];
+              }}>-</span
+            >
+          </span>
+        {/each}
       </div>
     </div>
   </div>
@@ -127,10 +144,35 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    background: #c7daf3;
+    border-radius: 15px;
+    padding: 15px;
+  }
+  .remove-tag {
+    background: rgb(184, 35, 35);
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    margin: 0px;
   }
 
-  .tags-list input {
+  .tag-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0px;
+  }
+
+  .tag-wrapper input {
     text-transform: capitalize;
+    width: 80%;
+    margin: 0px;
+    border: 0px;
+    background: transparent;
   }
 
   .modal-wrapper {
