@@ -6,7 +6,7 @@
 
 <div class="dashboard">
   {#each $taskPerCategory as _, index}
-    <List {index} {taskPerCategory} />
+    <List {index} />
   {/each}
   <button
     class="new-list-button"
@@ -16,6 +16,7 @@
         {
           title: "default",
           tasks: [{ title: "default", description: "default" }],
+          tags: [],
         },
       ])}>+ Add a new list</button
   >
