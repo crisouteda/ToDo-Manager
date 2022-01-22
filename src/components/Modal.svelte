@@ -56,7 +56,7 @@
           ];
           $taskPerCategory = cris;
           window.location.reload();
-        }}>Remove</button
+        }}>Remove Card</button
       >
       <div class="tags-list">
         {#each $taskPerCategory[$listIndexStore]?.tasks[$cardIndexStore]?.tags as tag, i}
