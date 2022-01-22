@@ -7,7 +7,6 @@
   import { getUserStore } from "./stores/user";
 
   let user = getUserStore();
-  console.log($user, "ldldlfld");
 </script>
 
 <main>
