@@ -1,8 +1,14 @@
 <script>
+  import Modal from "./components/Modal.svelte";
   import Dashboard from "./components/Dashboard.svelte";
+  import { listIndexStore, cardIndexStore } from "./stores/listIndex";
+  $: console.log($listIndexStore, $cardIndexStore);
 </script>
 
 <main>
+  {#if $listIndexStore !== undefined && $cardIndexStore !== undefined}
+    <Modal />
+  {/if}
   <Dashboard />
 </main>
 
