@@ -57,11 +57,14 @@
   }
 
   .tags-wrapper span {
-    max-width: 50%;
+    max-width: 45%;
     padding: 5px 5px 0px;
     border-radius: 5px;
     border: 0.1px solid #f1f1f1;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   button {
