@@ -1,14 +1,23 @@
 <script>
   import Modal from "./components/Modal.svelte";
   import Dashboard from "./components/Dashboard.svelte";
+  import Header from "./components/Header.svelte";
+  import Sign from "./components/Sign.svelte";
   import { listIndexStore, cardIndexStore } from "./stores/listIndex";
-  $: console.log($listIndexStore, $cardIndexStore);
+  import { getUserStore } from "./stores/user";
+
+  let user = getUserStore();
+  console.log($user, "ldldlfld");
 </script>
 
 <main>
+  {#if !$user.username}
+    <Sign />
+  {/if}
   {#if $listIndexStore !== undefined && $cardIndexStore !== undefined}
     <Modal />
   {/if}
+  <Header />
   <Dashboard />
 </main>
 
