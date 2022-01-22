@@ -2,7 +2,7 @@
 
 The following project has been developed for the international [FemHack](https://nuwe.io/femhack) in the <mark>frontend</mark>category.
 
-[Visit the deployed app](https://modest-cori-611038.netlify.app/)
+[Visit the deployed app](https://trelltwo.netlify.app/)
 
 ## Tools
 
