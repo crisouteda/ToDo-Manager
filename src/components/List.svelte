@@ -1,112 +1,37 @@
 <script>
-  export let title;
-  export let titleList;
   export let index;
   import Card from "./Card.svelte";
-
-  let cardList = [
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-    {
-      title: "default",
-      description: "add your description here",
-    },
-  ];
+  export let taskPerCategory;
 </script>
 
 <div class="list">
   <div class="head">
     <input
-      bind:value={title}
-      on:change={(e) => (titleList[index] = e.target.value)}
+      bind:value={$taskPerCategory[index].title}
+      on:change={(e) => ($taskPerCategory[index].title = e.target.value)}
     />
     <button
       class="remove-button"
       on:click={() => {
-        titleList.splice(index, 1);
-        titleList = titleList;
+        let newBla = $taskPerCategory;
+        newBla.splice(index, 1);
+        $taskPerCategory = newBla;
       }}>-</button
     >
   </div>
   <div class="cards-wrapper">
-    {#each cardList as card, index}
-      <Card bind:title bind:cardList bind:card {index} />
+    {#each $taskPerCategory[index].tasks as _, cardIndex}
+      <Card listIndex={index} {cardIndex} />
     {/each}
   </div>
   <button
     class="tail"
     on:click={() => {
-      cardList = [
-        ...cardList,
+      $taskPerCategory[index].tasks = [
+        ...$taskPerCategory[index].tasks,
         {
           title: "default",
-          description: "add your description here",
+          description: "default",
         },
       ];
     }}
@@ -120,13 +45,20 @@
     display: flex;
     align-items: center;
     padding: 20px 5px;
+    border-radius: 15px;
   }
-
   .head input {
     font-weight: bold;
     text-transform: capitalize;
-    padding: 0px;
     margin: 0px;
+    padding: 10px;
+    width: 100%;
+    background-color: transparent;
+    border: 0px;
+  }
+
+  .head input:focus {
+    background: white;
   }
 
   .tail {
@@ -138,6 +70,12 @@
     border: 0px;
     background: transparent;
     text-align: left;
+    border-radius: 15px;
+  }
+
+  .head:hover,
+  .tail:hover {
+    background-color: #abcbf8;
   }
 
   .cards-wrapper {
@@ -152,7 +90,7 @@
 
   .cards-wrapper::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: #c6c1e6;
+    background-color: #96bdf0;
   }
 
   .list {
@@ -163,12 +101,6 @@
     flex-direction: column;
     padding: 5px;
     margin: 0px 8px;
-  }
-
-  input {
-    width: 100%;
-    background-color: transparent;
-    border: 0px;
   }
 
   .remove-button {

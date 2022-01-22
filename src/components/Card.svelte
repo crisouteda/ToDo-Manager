@@ -1,12 +1,12 @@
 <script>
-  export let title;
-  export let cardList;
-  export let card;
-  export let index;
+  export let listIndex;
+  export let cardIndex;
+  import { getTaskStore } from "../stores/tasks";
+  let taskPerCategory = getTaskStore();
 </script>
 
 <div>
-  <input value={card.title} />
+  <input value={$taskPerCategory[listIndex].tasks[cardIndex].title} />
 </div>
 
 <style>
