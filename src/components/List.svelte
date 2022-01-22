@@ -1,8 +1,7 @@
 <script>
   export let index;
   import Card from "./Card.svelte";
-  import { getTaskStore } from "../stores/tasks";
-  let taskPerCategory = getTaskStore();
+  export let taskPerCategory;
 </script>
 
 <div class="list">
@@ -18,13 +17,12 @@
           ...$taskPerCategory.slice(0, index),
           ...$taskPerCategory.slice(index + 1),
         ];
-        window.location.reload();
       }}>-</button
     >
   </div>
   <div class="cards-wrapper">
     {#each $taskPerCategory[index]?.tasks as _, cardIndex}
-      <Card listIndex={index} {cardIndex} />
+      <Card listIndex={index} {cardIndex} {taskPerCategory} />
     {/each}
   </div>
   <button
